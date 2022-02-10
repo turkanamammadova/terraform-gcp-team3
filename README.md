@@ -8,7 +8,7 @@
 - Go to GCP Dashboard(under hamburger menu) and create a project
 - Note `Project name` and `Project ID`
 
-## IAM (Identity and Access Management)
+### IAM (Identity and Access Management)
 > GCP IAM service manages access controls for Google resources
 1. Go to IAM service and click `ADD`
 2. Enter one or more users by using users' email addresses
@@ -20,7 +20,7 @@
 - *Owner* - Full access to most Google Cloud resources
 
 
-## Github
+### Github
 
 1. Go to Github and create a repo for your project, dont forget to add `.gitignore` and `README.md` files
 2. This is group project, so add your collaborators into your project with their github names
