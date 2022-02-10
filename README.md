@@ -26,6 +26,15 @@
 2. This is group project, so add your collaborators into your project with their github names
 3. After adding them as collaborator, users will be able to add their SSH public keys to github successfully
 4. Users will be able to clone the project into their locals with `git clone` command
+
+### Google Cloud Shell
+1. Activate Google Cloud Shell (Shell icon is located in from GCP header section)
+2. From Cloud Shell terminal clone the project to your local
+- copy project URL (ssh) from github
+- from your local execute `git clone REPO_URL`
+- check the logs and make sure it's cloned properly
+3. Inside your project
+
 																	
 
 
