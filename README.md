@@ -33,7 +33,26 @@
 - copy project URL (ssh) from github
 - from your local execute `git clone REPO_URL`
 - check the logs and make sure it's cloned properly
-3. Inside your project
+
+ ### VPC module
+ > In this project, we used global VPC, because it provided us managed and global virtual network for all of our Gcloud resources through subnets. 
+
+Steps:
+ 1. Create vpc.tf file in folder with `.gitignore` and `README.md` files
+ 2. Use `google_compute_network` resource to create the vpc
+ ```
+ resource "google_compute_network" "globalvpc" {
+	name = "team3-vpc"
+	auto_create_subnetworks = "true"
+	routing_mode = "GLOBAL"
+}
+```
+  3. Open integrated terminal for this folder 
+  4. DO NOT FORGET to set the project first, otherwise your resources won't be created under your project in GCP
+     
+     Command for setting the project:
+     			`gcloud config set project [PROJECT_ID]`
+
 
 																	
 
