@@ -57,7 +57,7 @@ Steps:
    7. Run `terraform apply` to apply your changes
    8. Go to Google Console and check if your VPC is created under the name of `team3-vpc`
    	
-	Note: there is also `Default` VPC in GCP. Please find your newly created VPC
+	Note: there is also Default VPC in GCP. Please find your newly created VPC
 	
    ### Database
 > Google Cloud SQL is managed database service and it allows us to run MySQL, PosgreSQL on GCloud.
@@ -161,8 +161,8 @@ sudo systemctl enable httpd
 10. Use `mysql -u mammadova -h 35.196.102.47 -p team3db` command to connect from your VM machine to your database instance
 
 
-At this point, your wordpress should be UP and RUNNIN!!! YAAAAYYY!
-Note: Go to wordpress backend and customize your web page
+At this point, your wordpress should be UP and RUNNING!!! 
+Note: Go to wordpress backend and customize your web page : )
      
   
 	
