@@ -48,10 +48,16 @@ Steps:
 }
 ```
   3. Open integrated terminal for this folder 
-  4. DO NOT FORGET to set the project first, otherwise your resources won't be created under your project in GCP
+  4. **DO NOT FORGET** to set the project first, otherwise your resources won't be created under your project in GCP
      
      Command for setting the project:
      			`gcloud config set project [PROJECT_ID]`
+   5. Run `terraform init` command to initialize it
+   6. Run `terraform plan` and see if you have any syntax error
+   7. Run `terraform apply` to apply your changes
+   8. Go to Google Console and check if your VPC is created under the name of `team3-vpc`
+   	
+	Note: there is also `Default` VPC in GCP. Please find your newly created VPC
 
 
 																	
