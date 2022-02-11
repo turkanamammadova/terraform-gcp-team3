@@ -165,8 +165,8 @@ At this point, your wordpress should be UP and RUNNING!!!
 Note: Go to wordpress backend and customize your web page : )
      
   
-	
-
+### Terraform Registry - latest release v3.0.1	
+<https://registry.terraform.io/modules/turkanamammadova/team3/gcp/3.0.1.0>
 
 																	
 
