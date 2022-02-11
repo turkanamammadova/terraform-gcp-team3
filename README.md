@@ -63,8 +63,9 @@ Steps:
 > Google Cloud SQL is managed database service and it allows us to run MySQL, PosgreSQL on GCloud.
 
  1. In Cloud Shell under your repo folder, create a folder DB and add terraform files in it - `dbinstance.tf`, `variables.tf` and `provider.tf`
- 2. In `dbinstance.tf` add your resources to create your database instance. Use google_sql_database_instance resource for this
-	
+ 2. In `dbinstance.tf` add your resources to create your database instance. Use `google_sql_database_instance` resource for this:
+ 
+	```
 	resource "google_sql_database_instance" "instance" {
 	name = var.config["name"]
 	region = var.config["region"]
@@ -72,8 +73,8 @@ Steps:
 	settings {
 		tier = var.config["tier"]
 	}
-	deletion_protection = var.config["deletion_protection"]
-}
+	deletion_protection = var.config["deletion_protection"]}
+
   3. In `dbinstance.tf` file add your resource to create your database inside db instance
   
 	resource "google_sql_database" "database" {
@@ -94,7 +95,7 @@ Steps:
    ### Autoscaling
  > For handling increasings in traffic dynamically we used Autoscaling. It's adding/reducing capacity.
 
-  1. Create `asg.tf` file and add `google_compute_autoscaler` resource inside the file
+  1. Create `asg.tf` file and add `google_compute_autoscaler` resource inside the file. Use `gcloud compute images list` command to list of available images in GCloud. For ex: we used `centos-cloud/centos-7`.  [PROJECT/FAMILY]
     
 	resource "google_compute_autoscaler" "asg" {
 	zone = var.asg_config["zone"]
@@ -110,7 +111,7 @@ Steps:
 	}}
 
      
-  2.  Add `google_compute_instance_template` resource in `asg.tf` file. No matter how many instances are in your instance group, they will be created from this template. 
+  2.  Add `google_compute_instance_template` resource in `asg.tf` file. No matter how many instances are in your instance group, they will be created from this template. Use `gcloud compute machine-types list` command to list all available machine types in GCloud.  For ex, we used: 
 
 	resource "google_compute_instance_template" "team3-template" {
 	name = var.asg_config["instance_template_name"]
@@ -157,6 +158,11 @@ sudo systemctl enable httpd
 7. Run `terraform init`, `terraform apply` commands to create the services in GCP
 8. Go Gcloud and check if resources are created properly
 9. Use public IP for the instance and see if you are able to load the wordpress
+10. Use `mysql -u mammadova -h 35.196.102.47 -p team3db` command to connect from your VM machine to your database instance
+
+
+At this point, your wordpress should be UP and RUNNIN!!! YAAAAYYY!
+Note: Go to wordpress backend and customize your web page
      
   
 	
