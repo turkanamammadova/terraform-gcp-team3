@@ -59,6 +59,9 @@ Steps:
    	
 	Note: there is also `Default` VPC in GCP. Please find your newly created VPC
 	
+   ### Database
+> Google Cloud SQL is managed database service and it allows us to run MySQL, PosgreSQL on GCloud.
+	
 	
    ### Autoscaling
  > For handling increasings in traffic dynamically we used Autoscaling. It's adding/reducing capacity.
@@ -101,6 +104,31 @@ Steps:
 3. Also add your `google_compute_instance_group_manager`, `google_compute_target_pool`, and `google_compute_firewall` resource in asg.tf file as well for handling firewall and targets groups.
 4. Add `variables.tf` file inside your ASG folder. Variables file will allow you to have your scripts more dynamic. Instead of hardcoding the data inside your resources, `variables.tf` file will give you opportunity to keep your data inside it and fetch from another file as long as the files share same root.
 5. Add `startup.sh` file for bootstrapping. It means whatever command like you in this file, it will be launching during the instance provisioning. Please see `metadata_startup_script = file("startup.sh")` line under `google_compute_instance_template` resource.
+In our case, here is our script to install wordpress:
+```
+WORDPRESS_DB_HOST="HOST_IP"
+WORDPRESS_DB_NAME="team3db"
+WORDPRESS_DB_USER="mammadova"
+WORDPRESS_DB_PASSWORD="DB_PASSWORD"
+sudo yum install httpd wget unzip epel-release mysql -y
+sudo yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+sudo yum -y install yum-utils
+sudo yum-config-manager --enable remi-php56   [Install PHP 5.6]
+sudo yum -y install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo
+sudo wget https://wordpress.org/latest.tar.gz
+sudo tar -xf latest.tar.gz -C /var/www/html/
+sudo mv /var/www/html/wordpress/* /var/www/html/
+sudo getenforce
+sudo sed ‘s/SELINUX=permissive/SELINUX=enforcing/g’ /etc/sysconfig/selinux -i
+sudo setenforce 0
+sudo chown -R apache:apache /var/www/html/
+sudo systemctl start httpd
+sudo systemctl enable httpd
+```
+6. **DO NOT FORGET** to set the project first, otherwise your resources won't be created under your project in GCP
+7. Run `terraform init`, `terraform apply` commands to create the services in GCP
+8. Go Gcloud and check if resources are created properly
+9. Use public IP for the instance and see if you are able to load the wordpress
      
   
 	
