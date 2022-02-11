@@ -84,7 +84,11 @@ Steps:
   3. In variables.tf add your variables to make your resources more dynamic
   4. Run `terraform init`, `terraform apply` to apply your changes
   5. Check Gcloud and make sure your resources are created under `team3-db-instance`
-  6.  
+  6. In Google Console, you will be able to find your db instance's `Public IP address` and also `Connection name`
+  7. From SQL service, add a user to your database instance 
+  8. You can connect to your db instance from Cloud Shell by using `gcloud sql connect team3-db-instance --user=mammadova --quiet` command
+  9. Connect to your database instance, use `show databases;` query and make sure your db is created. *this db will be used for wordpress connection*
+  10. If you see your db inside your db instance, you should be good. Move on 
 	
 	
    ### Autoscaling
